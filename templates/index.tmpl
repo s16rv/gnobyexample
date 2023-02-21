@@ -9,25 +9,24 @@
     <div id="intro">
       <h2><a href="./">Gno by Example</a></h2>
       <p>
-        <a href="https://go.dev">Go</a> is an
-        open source programming language designed for
-        building simple, fast, and reliable software.
-        Please read the official
-        <a href="https://go.dev/doc/tutorial/getting-started">documentation</a>
-        to learn a bit about Go code, tools packages,
-        and modules.
+        <a href="https://github.com/gnolang/gno" target="_blank">Gnolang</a> 
+        the language used to write Smart Contracts, called 
+        Realms, on Gnoland. You can see it as an interpreted 
+        version of Golang: developers upload their realm 
+        sources on-chain and the GnoVM executes its AST 
+        interpretation.
       </p>
 
       <p>
-        <em>Go by Example</em> is a hands-on introduction
-        to Go using annotated example programs. Check out
-        the <a href="hello-world">first example</a> or
+        <em>Gno by Example</em> is hands-on to Gno using 
+        annotated example programs. Check out
+        the <a href="hello-world.html">first example</a> or
         browse the full list below.
       </p>
 
       <ul>
       {{range .}}
-        <li><a href="{{.ID}}">{{.Name}}</a></li>
+        <li><a href="{{.ID}}.html">{{.Name}}</a></li>
       {{end}}
       </ul>
 {{ template "footer" }}
