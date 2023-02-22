@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gno by Example: Build gnodev and gnokey</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'hello-world';
+          }
+          
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="build-gnodev-and-gnokey">
+      <h2><a href="./">Gno by Example</a>: Build gnodev and gnokey</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Gnolang comes with cli tool suites to interact with
+the chain.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> git clone git@github.com:gnolang/gno.git
+</span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>To build cli tools suites, clone gno repo and build it.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> cd ./gno</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> make install</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">Installing gnodev
+</span></span></span><span class="line"><span class="cl"><span class="go">go install ./cmd/gnodev
+</span></span></span><span class="line"><span class="cl"><span class="go">Installing gnokey
+</span></span></span><span class="line"><span class="cl"><span class="go">go install ./cmd/gnokey</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><em>gnodev</em> which provides multiple utilities to
+develop in Gnolang.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnodev --help</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">available subcommands:
+</span></span></span><span class="line"><span class="cl"><span class="go">  build - build a gno package
+</span></span></span><span class="line"><span class="cl"><span class="go">  precompile - precompile .gno to .go
+</span></span></span><span class="line"><span class="cl"><span class="go">  test - test a gno package
+</span></span></span><span class="line"><span class="cl"><span class="go">  repl - start a GnoVM REPL</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><em>gnokey</em> to create key, sign/broadcast transactions
+and make RPC queries.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnokey --help</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">available subcommands:
+</span></span></span><span class="line"><span class="cl"><span class="go">  add - add key to keybase
+</span></span></span><span class="line"><span class="cl"><span class="go">  delete - delete key from keybase
+</span></span></span><span class="line"><span class="cl"><span class="go">  generate - generate a new private key
+</span></span></span><span class="line"><span class="cl"><span class="go">  list - list all known keys
+</span></span></span><span class="line"><span class="cl"><span class="go">  sign - sign a document
+</span></span></span><span class="line"><span class="cl"><span class="go">  verify - verify a document signature
+</span></span></span><span class="line"><span class="cl"><span class="go">  broadcast - broadcast a signed document
+</span></span></span><span class="line"><span class="cl"><span class="go">  query - make an ABCI query
+</span></span></span><span class="line"><span class="cl"><span class="go">  maketx - compose a tx document to sign</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Now that we can interact to gno with our local setup,
+let’s learn more about gno.</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+
+    <p class="footer">
+      by <a href="https://github.com/s16rv" target="_blank">S16 Research Ventures</a> | <a href="https://github.com/s16rv/gnobyexample" target="_blank">source</a> | template by <a href="https://github.com/mmcgrana/gobyexample" target="_blank">gobyexample</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

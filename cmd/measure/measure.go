@@ -40,8 +40,9 @@ func main() {
 				// Convert tabs to spaces before measuring, so we get an accurate measure
 				// of how long the output will end up being.
 				line := strings.Replace(line, "\t", "    ", -1)
-				if !foundLongLine && !commentPat.MatchString(line) && (utf8.RuneCountInString(line) > 58) {
-					fmt.Printf("measure: %s:%d\n", sourcePath, i+1)
+				count := utf8.RuneCountInString(line)
+				if !foundLongLine && !commentPat.MatchString(line) && (count > 58) {
+					fmt.Printf("measure: %s:%d, count: %d\n", sourcePath, i+1, count)
 					foundLongLine = true
 					foundLongFile = true
 				}
