@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gno by Example: Interact with Chain</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'build-gnodev-and-gnokey';
+          }
+          
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="interact-with-chain">
+      <h2><a href="./">Gno by Example</a>: Interact with Chain</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Before interacting with the chain, we need to create
+an account by generating a seed or mnemonic code and
+adding to an account as your preferred KEYNAME.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnokey add KEYNAME</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">Enter a passphrase to encrypt your key to disk:
+</span></span></span><span class="line"><span class="cl"><span class="go">Repeat the passphrase:</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">* KEYNAME (local) - addr: g14gc7je0fgpw4sz9vud604txwqj
+</span></span></span><span class="line"><span class="cl"><span class="go">n8u3jc3xjgj5 pub: gpub1pgfj7ard9eg82cjtv4u4xetrwqer2dn
+</span></span></span><span class="line"><span class="cl"><span class="go">txyfzxz3pq22guqqjm5r39tyqnnjn75vdkfk7cak5sadxmvgl3pd55
+</span></span></span><span class="line"><span class="cl"><span class="go">mqqzjx3kx4ykr3, path: &lt;nil&gt;</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">**IMPORTANT** write this mnemonic phrase in a safe place.
+</span></span></span><span class="line"><span class="cl"><span class="go">It is the only way to recover your account if you ever
+</span></span></span><span class="line"><span class="cl"><span class="go">forget your password.</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">kid rose ...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can get our account balance using this command,
+replace ACCOUNT_ADDR with your address.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnokey query auth/accounts/ACCOUNT_ADDR \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --remote test3.gno.land:36657</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="go">height: 0
+</span></span></span><span class="line"><span class="cl"><span class="go">data: {
+</span></span></span><span class="line"><span class="cl"><span class="go">  &#34;BaseAccount&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;address&#34;: &#34;g1jg8mtutu9khhfwc4nxmuhcpftf0pajdhfvsqf5&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;coins&#34;: &#34;298037880ugnot&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;public_key&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="go">      &#34;@type&#34;: &#34;/tm.PubKeySecp256k1&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">      &#34;value&#34;: &#34;A+FhNtsXHjLfSJk1lB8FbiL4mGPjc50Kt81J7EKDn
+</span></span></span><span class="line"><span class="cl"><span class="go">      J2y&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">    },
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;account_number&#34;: &#34;3222&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="go">    &#34;sequence&#34;: &#34;42&#34;
+</span></span></span><span class="line"><span class="cl"><span class="go">  }
+</span></span></span><span class="line"><span class="cl"><span class="go">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+
+    <p class="footer">
+      by <a href="https://github.com/s16rv" target="_blank">S16 Research Ventures</a> | <a href="https://github.com/s16rv/gnobyexample" target="_blank">source</a> | template by <a href="https://github.com/mmcgrana/gobyexample" target="_blank">gobyexample</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>

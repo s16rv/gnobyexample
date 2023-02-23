@@ -28,6 +28,8 @@ func isDir(path string) bool {
 
 var commentPat = regexp.MustCompile("\\s*\\/\\/")
 
+const MAX_LINES = 58
+
 func main() {
 	sourcePaths, err := filepath.Glob("./examples/*/*")
 	check(err)
@@ -41,7 +43,7 @@ func main() {
 				// of how long the output will end up being.
 				line := strings.Replace(line, "\t", "    ", -1)
 				count := utf8.RuneCountInString(line)
-				if !foundLongLine && !commentPat.MatchString(line) && (count > 58) {
+				if !foundLongLine && !commentPat.MatchString(line) && (count > MAX_LINES) {
 					fmt.Printf("measure: %s:%d, count: %d\n", sourcePath, i+1, count)
 					foundLongLine = true
 					foundLongFile = true
