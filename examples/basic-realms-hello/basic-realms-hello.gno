@@ -5,7 +5,7 @@
 // contains functionalities and utilities that can be
 // used in realms.
 
-// gnobyexample/hello/hello.gno
+/// gnobyexample/hello/hello.gno
 package hello
 
 func world() string {
