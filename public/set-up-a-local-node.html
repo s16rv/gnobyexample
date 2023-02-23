@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gno by Example: Set Up a Local Node</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'interact-with-chain';
+          }
+          
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="set-up-a-local-node">
+      <h2><a href="./">Gno by Example</a>: Set Up a Local Node</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>To test deployments and interact with our contract
+locally, it is recommended to run a local gnoland node.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> git clone git@github.com:gnolang/gno.git
+</span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> cd ./gno</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> make
+</span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Then, we can access node RPC on <code>127.0.0.1:26657</code> for
+interacting with our contract.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ./build/gnoland</span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Note that our local gnoland node cache is stored in
+the <code>gno/testdir</code> directory. We can <code>rm</code> it to clean
+the cache (and therefore all deployments and actions
+made in our local environment).</p>
+
+          </td>
+          <td class="code empty">
+            
+          
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+
+    <p class="footer">
+      by <a href="https://github.com/s16rv" target="_blank">S16 Research Ventures</a> | <a href="https://github.com/s16rv/gnobyexample" target="_blank">source</a> | template by <a href="https://github.com/mmcgrana/gobyexample" target="_blank">gobyexample</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
