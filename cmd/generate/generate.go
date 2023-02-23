@@ -85,6 +85,8 @@ func whichLexer(path string) string {
 		return "go"
 	} else if strings.HasSuffix(path, ".sh") {
 		return "console"
+	} else if strings.HasSuffix(path, ".gno") {
+		return "gno"
 	}
 	panic("No lexer for " + path)
 }
@@ -100,9 +102,9 @@ var dashPat = regexp.MustCompile(`\-+`)
 
 // Seg is a segment of an example
 type Seg struct {
-	Docs, DocsRendered              string
-	Code, CodeRendered, CodeForJs   string
-	CodeEmpty, CodeLeading, CodeRun bool
+	Docs, DocsRendered                           string
+	Code, CodeRendered, CodeForJs                string
+	CodeEmpty, CodeLeading, CodeRun, CodePackage bool
 }
 
 // Example is info extracted from an example file
@@ -185,12 +187,19 @@ func parseSegs(sourcePath string) ([]*Seg, string) {
 		seg.CodeEmpty = (seg.Code == "")
 		seg.CodeLeading = (i < (len(segs) - 1))
 		seg.CodeRun = strings.Contains(seg.Code, "package main")
+		seg.CodePackage = strings.Contains(seg.Code, "package")
 	}
 	return segs, filecontent
 }
 
 func chromaFormat(code, filePath string) string {
-	lexer := lexers.Get(filePath)
+	var lexer chroma.Lexer
+	if strings.HasSuffix(filePath, ".gno") {
+		lexer = lexers.Get("go")
+	} else {
+		lexer = lexers.Get(filePath)
+	}
+
 	if lexer == nil {
 		lexer = lexers.Fallback
 	}
@@ -226,6 +235,10 @@ func parseAndRenderSegs(sourcePath string) ([]*Seg, string) {
 
 			// adding the content to the js code for copying to the clipboard
 			if strings.HasSuffix(sourcePath, ".go") {
+				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
+			}
+
+			if strings.HasSuffix(sourcePath, ".gno") {
 				seg.CodeForJs = strings.Trim(seg.Code, "\n") + "\n"
 			}
 		}
@@ -356,27 +369,27 @@ var SimpleShellOutputLexer = chroma.MustNewLexer(
 	chroma.Rules{
 		"root": {
 			// $ or > triggers the start of prompt formatting
-			{`^\$`, chroma.GenericPrompt, chroma.Push("prompt")},
-			{`^>`, chroma.GenericPrompt, chroma.Push("prompt")},
+			{Pattern: `^\$`, Type: chroma.GenericPrompt, Mutator: chroma.Push("prompt")},
+			{Pattern: `^>`, Type: chroma.GenericPrompt, Mutator: chroma.Push("prompt")},
 
 			// empty lines are just text
-			{`^$\n`, chroma.Text, nil},
+			{Pattern: `^$\n`, Type: chroma.Text, Mutator: nil},
 
 			// otherwise its all output
-			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+			{Pattern: `[^\n]+$\n?`, Type: chroma.GenericOutput, Mutator: nil},
 		},
 		"prompt": {
 			// when we find newline, do output formatting rules
-			{`\n`, chroma.Text, chroma.Push("output")},
+			{Pattern: `\n`, Type: chroma.Text, Mutator: chroma.Push("output")},
 			// otherwise its all text
-			{`[^\n]+$`, chroma.Text, nil},
+			{Pattern: `[^\n]+$`, Type: chroma.Text, Mutator: nil},
 		},
 		"output": {
 			// sometimes there isn't output so we go right back to prompt
-			{`^\$`, chroma.GenericPrompt, chroma.Pop(1)},
-			{`^>`, chroma.GenericPrompt, chroma.Pop(1)},
+			{Pattern: `^\$`, Type: chroma.GenericPrompt, Mutator: chroma.Pop(1)},
+			{Pattern: `^>`, Type: chroma.GenericPrompt, Mutator: chroma.Pop(1)},
 			// otherwise its all output
-			{`[^\n]+$\n?`, chroma.GenericOutput, nil},
+			{Pattern: `[^\n]+$\n?`, Type: chroma.GenericOutput, Mutator: nil},
 		},
 	},
 )

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Gno by Example: Basic Realms - Hello</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <script>
+      onkeydown = (e) => {
+          
+          if (e.key == "ArrowLeft") {
+              window.location.href = 'set-up-a-local-node';
+          }
+          
+          
+      }
+  </script>
+  <body>
+    <div class="example" id="basic-realms-hello">
+      <h2><a href="./">Gno by Example</a>: Basic Realms - Hello</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Before we dive in, let&rsquo;s first study the differences
+between realms and packages. A realm is a specific
+instance of a <em>smart contract</em> written in the Gnolang
+programming language. On the other hand, a package
+contains functionalities and utilities that can be
+used in realms.</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>gnobyexample/hello/hello.gno</p>
+
+          </td>
+          <td class="code leading">
+            <img title="Copy code" src="clipboard.png" class="copy" />
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">hello</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">world</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="s">&#34;world!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Our first realm will print the classic
+&ldquo;hello world&rdquo; message.</p>
+
+          </td>
+          <td class="code">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Render</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="s">&#34;Hello, &#34;</span> <span class="o">+</span> <span class="nf">world</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Then, deploy the realm on our local gnoland.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnokey maketx addpkg gnobyexample \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --pkgpath &#34;gno.land/r/gnobyexample/hello&#34; \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --pkgdir &#34;gnobyexample/hello&#34; \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --gas-fee 1ugnot \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --gas-wanted 1000000 \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --broadcast true \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --chainid &#34;dev&#34; \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --remote localhost:26657
+</span></span><span class="line"><span class="cl"><span class="go">OK!
+</span></span></span><span class="line"><span class="cl"><span class="go">GAS WANTED: 1000000
+</span></span></span><span class="line"><span class="cl"><span class="go">GAS USED:   154037</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl"><span class="gp">$</span> cd gno
+</span></span><span class="line"><span class="cl"><span class="go">...</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Run gnoland website on local env.</p>
+
+          </td>
+          <td class="code leading">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> ./build/website
+</span></span><span class="line"><span class="cl"><span class="go">Running on http://127.0.0.1:8888</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Head to <code>http://127.0.0.1:8888/r/gnobyexample/hello</code>
+to see our deployed realm!</p>
+
+          </td>
+          <td class="code empty leading">
+            
+          
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>We can also call our smart contract using
+<em>maketx call</em> option</p>
+
+          </td>
+          <td class="code">
+            
+          <pre tabindex="0" class="chroma"><code><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gp">$</span> gnokey maketx call gnobyexample \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --pkgpath &#34;gno.land/r/gnobyexample/hello&#34; \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --gas-fee 1ugnot \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --gas-wanted 1000000 \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --broadcast true \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --chainid &#34;dev&#34; \
+</span></span><span class="line"><span class="cl"><span class="gp">&gt;</span> --remote localhost:26657 --func &#34;Render&#34;
+</span></span><span class="line"><span class="cl"><span class="go">(&#34;Hello, world!&#34; string)
+</span></span></span><span class="line"><span class="cl"><span class="go">OK!
+</span></span></span><span class="line"><span class="cl"><span class="go">GAS WANTED: 1000000
+</span></span></span><span class="line"><span class="cl"><span class="go">GAS USED:   70250</span></span></span></code></pre>
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+
+    <p class="footer">
+      by <a href="https://github.com/s16rv" target="_blank">S16 Research Ventures</a> | <a href="https://github.com/s16rv/gnobyexample" target="_blank">source</a> | template by <a href="https://github.com/mmcgrana/gobyexample" target="_blank">gobyexample</a>
+    </p>
+
+    </div>
+    <script>
+      var codeLines = [];
+      codeLines.push('');codeLines.push('package hello\u000A');codeLines.push('func world() string {\u000A  return \"world!\"\u000A}\u000A');codeLines.push('func Render() string {\u000A  return \"Hello, \" + world()\u000A}\u000A');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');codeLines.push('');
+    </script>
+    <script src="site.js" async></script>
+  </body>
+</html>
